@@ -1,38 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" 
     isELIgnored="false"  %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
 <%
   request.setCharacterEncoding("UTF-8");
-%>    
-
+%>
 
 <html>
-<head>
-<meta charset=UTF-8">
-<title>응급회원 목록</title>
- <script type="text/javascript" src="https://freesound.org/data/previews/470/470504_2694940-lq.mp3"> 
-	function();
-	var myAlarm = new Audio("https://freesound.org/data/previews/470/470504_2694940-lq.mp3"); 
-	if (${member.emerg}= 1) {
-		alert(myAlarm.play(Audio));
-	} else (${member.emerg}!=1) {
-	   System.out.println("실패");
-	}
-</script>
-
-
-
-
-<META HTTP-EQUIV="refresh" CONTENT="10"></META>
-
-
-</head>
+	<head>
+		<meta charset=UTF-8">
+		<title>응급회원 목록</title>
+		<META HTTP-EQUIV="refresh" CONTENT="3">
+		<script>
+			const member = ${fn:length(membersListEmerg)};
+			console.log(member);
+			
+			if( member > 0 ){
+				var myAlarm = new Audio("https://freesound.org/data/previews/470/470504_2694940-lq.mp3"); 
+				'위험'+myAlarm.play();
+			}
+		</script>
+		 <script>
+			 function autoRefresh_info_div()	{
+				var currentLocation = window.location;
+				$("#info").fadeOut('slow').load(currentLocation + ' #info').fadeIn("slow");
+			}
+			setInterval(autoRefresh_sample_div(), 15000); //15초 후 새로고침 
+		</script> 
+	</head>
 <body>
-
-
 <h1  class="text_center">응급회원 목록</h1>
 <table id="info" border="1"  align="center"  width="80%">
     <tr align="center"   bgcolor="lightgreen">
@@ -67,7 +66,6 @@
   
 </table>
   <form>
- 		 	
  	<input type="button" value="시작" onclick="function autoRefresh_info_div()">  
 </form>
 
@@ -90,9 +88,7 @@
 		      <td>${warning.solYN}</td>		
 		    </tr>
 		  </c:forEach>   
-		  
-		</table>	
-		 <audio  controls autoplay="(if ${member.emerg}="1")"> <source src="https://freesound.org/data/previews/470/470504_2694940-lq.mp3" type="audio/mp3"> </audio>
-		
+		</table>		
 </body>
 </html>
+

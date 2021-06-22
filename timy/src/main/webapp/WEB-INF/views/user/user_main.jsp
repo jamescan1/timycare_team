@@ -79,7 +79,7 @@
 		</form>
 		
 		<div>
-			<audio preload="auto" controls></audio>
+			
 		</div>
 		<a href="../">index 페이지로 이동</a>
 	</body>
