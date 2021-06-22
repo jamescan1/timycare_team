@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.care.timy.member.MemberService;
 import com.care.timy.member.MemberVO;
+import com.care.timy.warning.warningService;
 
 
 
@@ -25,6 +26,9 @@ public class MemberControllerImpl   implements MemberController {
 	private MemberService memberService;
 	@Autowired
 	private MemberVO memberVO ;
+	@Autowired
+	private warningService warningService;
+	
 	
 	@Override
 	@RequestMapping(value="/member/listMembers.do" ,method = RequestMethod.GET)
@@ -42,8 +46,10 @@ public class MemberControllerImpl   implements MemberController {
 	public ModelAndView warning(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		List membersListEmerg = memberService.warningMember();
+		List warningList = warningService.listWarnings();
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("membersListEmerg", membersListEmerg);
+		mav.addObject("warningList", warningList);
 		//System.out.println(viewName);
 		return mav;
 	}

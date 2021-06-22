@@ -13,7 +13,7 @@
 	<head>
 		<meta charset=UTF-8">
 		<title>응급회원 목록</title>
-		<META HTTP-EQUIV="refresh" CONTENT="3">
+		<META HTTP-EQUIV="refresh" CONTENT="13">
 		<script>
 			const member = ${fn:length(membersListEmerg)};
 			console.log(member);
